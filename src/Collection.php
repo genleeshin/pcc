@@ -36,21 +36,11 @@ class Collection{
 	{
 		//$this->w('key: ' . $key);
 
-		$data_key = $this->map_attributes[$key]?:$key;
+		$data_key = array_key_exists($key, $this->map_attributes)?$this->map_attributes[$key]:$key;
 
 		//$this->w('data_key: ' . $data_key);
 
 		$this->$data_key = $value;
-	
-	}
-
-	public function w($m)
-	{
-	
-		echo "\n-------------------------";
-		echo $m;
-		echo "\n-------------------------";
-
 	
 	}
 

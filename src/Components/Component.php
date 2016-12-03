@@ -10,14 +10,14 @@ class Component{
 
 	protected $collections = [];
 
-	public function __construct($data, $attributes){
+	public function __construct($data=null, $attributes=null){
 
 		if(is_array($attributes))
 			$this->setAttributes($attributes);
-		else
+		elseif(is_closure($attributes))
 			$attributes($this);
-
-		$this->setCollections($data);
+		if($data)
+			$this->setCollections($data);
 	}
 
 	public function setCollections($data)
@@ -36,4 +36,5 @@ class Component{
 		$this->collections[] = $collection;
 	
 	}
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-use Components\Component as c;
+use PCC\Component as c;
 
 class ListGroup extends PHPUnit_Framework_TestCase{
 
