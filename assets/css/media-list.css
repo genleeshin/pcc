@@ -1,0 +1,5 @@
+.media-list img,
+.media-list h3{
+	display: inline-block;
+	margin-right: -4px;
+}

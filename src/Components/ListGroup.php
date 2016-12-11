@@ -18,10 +18,18 @@ class ListGroup extends Component{
 	{
 
 		$list = '<ul class="list-group" '. $this->getTagAttributes() .'>';
-	
-		foreach($this->data as $data){
-			$list .= $this->mkList($data->name);
-		}
+
+		if(is_object($this->data[0])):	
+
+			foreach($this->data as $data)
+				$list .= $this->mkList($data->name);
+			
+		else:
+
+			foreach($this->data as $data)
+				$list .= $this->mkList($data);
+
+		endif;
 
 		$list .= '</ul>';
 

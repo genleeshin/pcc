@@ -29,10 +29,13 @@ class ListGroup extends PHPUnit_Framework_TestCase{
 
     public function testListGroupWithAttributes()
     {
+        // give our list group an id
+        // <ul class="list-group" id="listID">
 
     	$list = c::ListGroup($this->getObjData(), function($at){
+            // tag attributes e.g <ul id="listID">
     		$at->attributes([
-				'id' => 'listNice'
+				'id' => 'listID'
 			]);
 		});
     

@@ -31,8 +31,10 @@ class Component{
 
 		}
 
-		if($data)
+		if(is_array($data[0]))
 			$this->setCollections($data);
+		else
+			$this->data = $data;
 	}
 
 	public function setDataKeys($data_keys = null)

@@ -2,6 +2,8 @@
 
 namespace PCC\Components;
 
+use PCC\Core\App;
+
 use PCC\Components\Component;
 
 /**
@@ -17,7 +19,9 @@ class MediaList extends Component{
 	public function render()
 	{
 
-		$list = '<div class="media-list ' . $this->getStyle() . '" ' . $this->getTagAttributes() . '>';
+		App::css('media-list');
+
+		$list = '<div class="list-group media-list ' . $this->getStyle() . '" ' . $this->getTagAttributes() . '>';
 
 		foreach($this->data as $data){
 			$list .= $this->mkList($data);
@@ -34,7 +38,7 @@ class MediaList extends Component{
 	{
 	
 		return '<a 
-			class="media-list-object" 
+			class="list-group-item" 
 			href="' . $data->url . '"> 
 			<img src="' . $data->image . '" class="'. $this->getStyle('image') .'">
 			<h3'. $this->getTags('name') . '>' . $data->name . '</h3></a>';
