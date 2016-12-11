@@ -11,13 +11,16 @@ attributes: [url, title]
 */
 
 class ListGroup extends Component{
+
+	protected $data_keys = ['name', 'url'];
+	
 	public function render()
 	{
 
 		$list = '<ul class="list-group" '. $this->getTagAttributes() .'>';
 	
-		foreach($this->collections as $data){
-			$list .= $this->mkList($data->title);
+		foreach($this->data as $data){
+			$list .= $this->mkList($data->name);
 		}
 
 		$list .= '</ul>';

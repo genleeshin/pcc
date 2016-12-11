@@ -4,48 +4,11 @@ namespace PCC\Traits;
 
 trait TraitAttributes{
 
+	use TraitTagAttributes;
+
 	protected $attributes = [];
 
 	protected $flipped_attributes = [];
-
-	public function attributes($array)
-	{
-	
-		$this->setTagAttributes($array);
-	
-	}
-
-	public function getTagAttributes($tag_attributes=null)
-	{
-		if(empty($tag_attributes)) $tag_attributes = $this->tag_attributes;
-
-		if(! count($tag_attributes) > 0) return '';
-
-		$attributes = [];
-	
-		foreach($tag_attributes as $k=>$v) {
-			
-			array_push($attributes, $this->getTagAttribute($k, $v));
-		}
-
-		return implode(' ', $attributes);
-	
-	}
-
-	public function getTagAttribute($name, $value){
-		$value = is_string($value) ? $value : implode(' ', $value);
-		
-		$attribute = $name . '="' . $value . '"';
-		
-		return $attribute;
-	}
-
-	public function setTagAttributes($array)
-	{
-	
-		$this->setAttribute('tag_attributes', $array);
-	
-	}
 
 	public function setAttributes(array $attributes)
 	{

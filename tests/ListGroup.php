@@ -7,8 +7,11 @@ class ListGroup extends PHPUnit_Framework_TestCase{
     public function testListGroup() {
     	
     	$list = c::ListGroup($this->getArrayData(), function($at){
-			$at->url = 'url';
-			$at->title = 'name';
+            // list group requires name and url fields
+            // we already have url field in the data array
+            // need to tell it to use "title" field as "name" field
+
+			$at->name = 'title';
 		});
 
 		$this->assertContains('ul', $list);
@@ -19,7 +22,7 @@ class ListGroup extends PHPUnit_Framework_TestCase{
 
     	$list = c::ListGroup($this->getObjData(), function($at){
 			$at->url = 'url';
-			$at->title = 'name';
+			$at->name = 'name';
 		});
     
     }
@@ -31,8 +34,6 @@ class ListGroup extends PHPUnit_Framework_TestCase{
     		$at->attributes([
 				'id' => 'listNice'
 			]);
-			$at->url = 'url';
-			$at->title = 'name';
 		});
     
     }
@@ -42,12 +43,12 @@ class ListGroup extends PHPUnit_Framework_TestCase{
     
     	$data = [
 			[
-				'name' => 'Title',
+				'title' => 'Title',
 				'url' => '/url1'
 			],
 
 			[
-				'name' => 'Title2',
+				'title' => 'Title2',
 				'url' => '/url2'
 			]
 		];

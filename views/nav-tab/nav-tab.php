@@ -1,15 +1,15 @@
-<ul class="nav nav-tabs">
-  <?php foreach($tabs as $k => $v): ?>
+<ul class="nav nav-tabs" <?=$comp->getTagAttributes()?>>
+  <?php foreach($tabs as $tab): ?>
 
-  	<li class="<?=$k==$active?'active':''?>"><a href="#<?='tab_' . $k?>"><?=$v?></a></li>
+  	<li class="<?=$tab['tab_id']==$active?'active':''?>"><a href="#<?=$tab['tab_id']?>"><?=$tab['name']?></a></li>
 
   <?php endforeach; ?>
 </ul>
 
 <div class="tab-content">
-	<?php foreach($data as $d): ?>
+	<?php foreach($comp->getData() as $d): ?>
 
-		<div class="tab-pane fade in<?=$d->tab==$active?' active':''?>" id="<?='tab_' . $d->tab?>">
+		<div class="tab-pane fade in<?=$d->tab_id==$active?' active':''?>" id="<?=$d->tab_id?>">
 
 			<?=$d->content?>
 			

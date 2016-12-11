@@ -6,26 +6,23 @@ class NavTab extends PHPUnit_Framework_TestCase{
 
     public function testNavTab() {
     	
-    	$list = c::NavTab($this->getArrayData(), function($at){
-			$at->tabs = ['login' => 'Login', 'register' => 'Register'];
-			$at->active = 'register';
-		});
+    	$output = c::NavTab($this->getArrayData(), ['attributes'=>['id' => 'navTab']]);
 
-		$this->assertContains('register', $list);
+		$this->assertContains('login', $output);
     }
 
 
     public function getArrayData()
     {
     
-    	$data = [
+		$data = [
 			[
-				'tab' => 'login',
+				'tab' => 'Login',
 				'content' => 'Login page'
 			],
 
 			[
-				'tab' => 'register',
+				'tab' => 'Sign Up',
 				'content' => 'Register page'
 			]
 		];

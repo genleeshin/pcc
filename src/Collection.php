@@ -14,6 +14,8 @@ class Collection{
 
 	public function __construct($callback, $data)
 	{
+
+		//dd($data->url);
 	
 		$this->callback = $callback;
 
@@ -27,21 +29,49 @@ class Collection{
 	{
 		$this->map_attributes = $this->callback->getFlippedAttributes();
 
-		foreach($this->data as $key => $value)
-			$this->setValue($key, $value);
+		if(is_object($this->data)){
+			$this->processObjData();
+		}else{
+
+			$this->processArrayData();
+		}
 	
 	}
 
-	public function setValue($key, $value)
+	public function processArrayData()
 	{
-		//$this->w('key: ' . $key);
+		$keys = $this->callback->getDataKeys();
 
-		$data_key = array_key_exists($key, $this->map_attributes)?$this->map_attributes[$key]:$key;
+		$data = [];
 
-		//$this->w('data_key: ' . $data_key);
+		foreach($keys as $key):
 
-		$this->$data_key = $value;
+			$data_key = $this->callback->$key;
+
+			if(is_closure($data_key)){
+				$this->$key = $data_key($this->data);
+			}else{
+
+				$this->$key = $this->data[$data_key];
+			}
+
+
+		endforeach;
 	
+	}
+
+	public function processObjData()
+	{
+
+		$keys = $this->callback->getDataKeys();
+
+		$data = [];
+
+		foreach($keys as $key):
+			$data_key = $this->callback->$key;
+
+			$this->$key = $this->data->$data_key;
+		endforeach;
 	}
 
 }
