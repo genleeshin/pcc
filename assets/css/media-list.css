@@ -3,3 +3,7 @@
 	display: inline-block;
 	margin-right: -4px;
 }
+
+.media-list img{
+	margin: 0 10px 0 0;
+}
