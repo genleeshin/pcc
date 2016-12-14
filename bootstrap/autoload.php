@@ -7,7 +7,7 @@ require __DIR__.'/../vendor/autoload.php';
 
 // Include common files
 
-require_once __DIR__ . '/../src/helpers.php';
+//require_once __DIR__ . '/../src/helpers.php';
 
 
 app('root', realpath(__DIR__.'/../'));
